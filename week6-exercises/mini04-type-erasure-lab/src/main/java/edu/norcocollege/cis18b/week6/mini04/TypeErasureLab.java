@@ -15,5 +15,7 @@ public class TypeErasureLab {
         System.out.println("Same runtime class: " + sameRuntimeClass);
         System.out.println("List is instance of java.util.List: " + listInstanceCheck);
         System.out.println("Course token simple name: " + TypeTokenPrinter.simpleNameOf(String.class));
+
+        // Type erasure removes generic type information at runtime, so logs only show the raw type.
     }
 }

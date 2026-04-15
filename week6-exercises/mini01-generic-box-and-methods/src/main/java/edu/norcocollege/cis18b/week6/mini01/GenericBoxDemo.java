@@ -10,6 +10,13 @@ public class GenericBoxDemo {
         }
         return values.get(0);
     }
+    // This method returns last item, while checking for null or empty list
+    public static <T> T last(List<T> values) {
+        if (values == null || values.isEmpty()) {
+            throw new IllegalArgumentException("values must contain at least one item");
+        }
+        return values.get(values.size() - 1);
+    }
 
     public static void main(String[] args) {
         Box<String> labelBox = new Box<>();
@@ -20,10 +27,14 @@ public class GenericBoxDemo {
 
         String firstStudent = first(List.of("Ada", "Grace", "Margaret"));
         Integer firstScore = first(List.of(98, 91, 87));
+        String lastStudent = last(List.of("Ada", "Grace", "Margaret"));
+        Integer lastScore = last(List.of(98, 91, 87));
 
         System.out.println("Label: " + labelBox.get());
         System.out.println("Units: " + unitsBox.get());
         System.out.println("First student: " + firstStudent);
+        System.out.println("Last student: " + lastStudent);
         System.out.println("First score: " + firstScore);
+        System.out.println("Last score: " + lastScore);
     }
 }

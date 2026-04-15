@@ -11,5 +11,12 @@ public class GenericObserverDemo {
         SecurityAlert alert = new SecurityAlert("HIGH", "login attempts");
         System.out.println("Dispatching alert: " + alert.level() + " " + alert.message());
         stream.notifyObservers(alert);
+
+        //Output Unsubscribe Observer A and dispatch another alert
+        System.out.println("\nUnsubscribing Observer A and dispatching another alert...");
+        stream.unsubscribe(alert2 -> System.out.println("Observer A received: " + alert2.level()));
+        SecurityAlert alert2 = new SecurityAlert("MEDIUM", "file access");
+        System.out.println("Dispatching alert: " + alert2.level() + " " + alert2.message());
+        stream.notifyObservers(alert2);
     }
 }
